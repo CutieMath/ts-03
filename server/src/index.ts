@@ -35,6 +35,13 @@ app.post("/decks", async (req: Request, res: Response) => {
     res.json(createDeck);
 });
 
+// Delete a Deck
+app.delete("/decks/:id", async (req: Request, res: Response) => {
+    const deckId = req.params.id;
+    const deck = await Deck.findByIdAndRemove(deckId);
+    res.json(deck);
+});
+
 
 const mongoURL = process.env.MONGO_URL;
 if(!mongoURL) {
