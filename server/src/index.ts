@@ -2,14 +2,24 @@ import express, {Request, Response} from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import Deck from "./models/Deck";
+import bodyParser from "body-parser";
 const app = express();
+app.use(bodyParser.json());
 dotenv.config();
 
 const PORT = 3000;
 
-
 app.get('/', (req: Request, res: Response) => {
     res.send('Cutie!');
+});
+
+// Create a new Deck
+app.post("/decks", async (req: Request, res: Response) => {
+    const newDeck = new Deck({
+        title: req.body.title,
+    });
+    const createDeck = await newDeck.save();
+    res.json(createDeck);
 });
 
 
