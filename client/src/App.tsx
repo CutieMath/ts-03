@@ -1,19 +1,27 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import './App.css'
 
 function App() {
   const [title, setTitle] = useState("");
 
-  function handleCreateDeck(e: React.FormEvent) {
+  async function handleCreateDeck(e: React.FormEvent) {
     e.preventDefault();
-    fetch("http://localhost:3000/decks", {
+    await fetch("http://localhost:3000/decks", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({title}),
     })
+    setTitle("");
   }
+
+  useEffect(() => {
+    async function fetchDecks() {
+      fetch("http://localhost:3000/decks");
+    } 
+    fetchDecks();
+  }, [])
 
   return <div className="App">
     <form onSubmit={handleCreateDeck}>

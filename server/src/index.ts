@@ -20,6 +20,12 @@ app.get('/', (req: Request, res: Response) => {
     res.send('Cutie!');
 });
 
+// Fetch all created decks
+app.get("/decks", async (req: Request, res: Response) => {
+    const decks = await Deck.find();
+    res.json(decks);
+});
+
 // Create a new Deck
 app.post("/decks", async (req: Request, res: Response) => {
     const newDeck = new Deck({
