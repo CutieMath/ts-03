@@ -1,11 +1,18 @@
 import express, {Request, Response} from "express";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 import Deck from "./models/Deck";
 import bodyParser from "body-parser";
+import cors from "cors";
 const app = express();
+
+app.use(cors(
+    {
+        origin: '*',
+    }
+));
 app.use(bodyParser.json());
-dotenv.config();
+import {config} from "dotenv";
+config();
 
 const PORT = 3000;
 
