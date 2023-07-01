@@ -6,6 +6,7 @@ import { config } from "dotenv";
 import { getDecksController } from "./controllers/getDecksController";
 import { createDeckController } from "./controllers/createDeckController";
 import { deleteDeckController } from "./controllers/deleteDeckController";
+import { createCardForDeckController } from "./controllers/createCardForDeckController";
 
 const app = express();
 app.use(
@@ -20,6 +21,7 @@ const PORT = 3000;
 app.get("/decks", getDecksController);
 app.post("/decks", createDeckController);
 app.delete("/decks/:id", deleteDeckController);
+app.post("/decks/:deckId/cards", createCardForDeckController);
 
 const mongoURL = process.env.MONGO_URL;
 if (!mongoURL) {
