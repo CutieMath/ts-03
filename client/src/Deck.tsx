@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import { useParams } from "react-router-dom";
 import { createCard } from "./api/createCard";
 import { getDeck } from "./api/getDeck";
 import { TDeck } from "./api/getDecks";
 import { deleteCard } from "./api/deleteCard";
+import "./Deck.css";
 
 export default function Deck() {
   const [deck, setDeck] = useState<TDeck | undefined>();
@@ -36,8 +36,8 @@ export default function Deck() {
   }, [deckId]);
 
   return (
-    <div className="App">
-      <div className="decks">
+    <div className="Deck">
+      <div className="cards">
         {cards.map((card, index) => (
           <li key={index}>
             {card}

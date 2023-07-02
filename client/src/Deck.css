@@ -5,13 +5,13 @@
   text-align: center;
 }
 
-.App {
+.Deck {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.App form {
+.Deck form {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -19,7 +19,7 @@
   margin: 0 auto;
 }
 
-.decks {
+.cards {
   display: grid;
   width: 600px;
   margin: 0 auto;
@@ -27,7 +27,7 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
-.decks li {
+.cards li {
   position: relative;
   display: flex;
   justify-content: center;
@@ -37,7 +37,7 @@
   border-radius: 20px;
 }
 
-.decks li button {
+.cards li button {
   position: absolute;
   font-size: 10px;
   top: 5px;
